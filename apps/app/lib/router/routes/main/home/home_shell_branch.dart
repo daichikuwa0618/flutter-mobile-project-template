@@ -37,8 +37,13 @@ class HomePageRoute extends GoRouteData {
       // By overriding the Provider in the Route build method, it is possible to
       // switch the implementation of Navigator based on the source of
       // navigation or the state.
-      child: const ProviderScope(
-        child: HomePage(),
+      child: ProviderScope(
+        child: HomePage(
+          goDebugPage: () => const DebugPageRoute().go(context),
+          goWebPage: () => const WebPageRoute().go(context),
+          goRepositoryDetail: (name) =>
+              GitHubRepositoryDetailPageRoute(name).go(context),
+        ),
       ),
     );
   }

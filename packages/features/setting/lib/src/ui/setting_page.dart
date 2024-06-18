@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SettingPage extends ConsumerWidget {
-  const SettingPage({super.key});
+  const SettingPage({required this.goLicensePage, super.key});
+
+  final VoidCallback? goLicensePage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -62,7 +64,7 @@ class SettingPage extends ConsumerWidget {
                   leading: const Icon(Icons.description),
                   title: Text(l10n.settingOpenSourceLicenses),
                   subtitle: Text(l10n.settingLibrariesWeUse),
-                  onTap: () => {}, // TODO
+                  onTap: goLicensePage,
                 ),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(

@@ -6,8 +6,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({
+    required this.goDebugPage,
+    required this.goWebPage,
+    required this.goRepositoryDetail,
     super.key,
   });
+
+  final VoidCallback? goDebugPage;
+  final VoidCallback? goWebPage;
+
+  final void Function(String) goRepositoryDetail;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,13 +25,13 @@ class HomePage extends ConsumerWidget {
         title: Text(l.appBar),
         actions: [
           IconButton(
-            onPressed: () => {}, // TODO
+            onPressed: goDebugPage,
             icon: const Icon(
               Icons.construction,
             ),
           ),
           IconButton(
-            onPressed: () => {}, // TODO
+            onPressed: goWebPage,
             icon: const Icon(
               Icons.web,
             ),
@@ -33,7 +41,7 @@ class HomePage extends ConsumerWidget {
           color: context.appColors.icon,
         ),
       ),
-      body: const GitHubRepositoryList(),
+      body: GitHubRepositoryList(goDetailPage: goRepositoryDetail),
     );
   }
 }

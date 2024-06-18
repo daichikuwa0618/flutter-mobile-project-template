@@ -14,7 +14,9 @@ typedef GitHubRepositoryPagingView = CommonPagingView<
     GitHubRepository>;
 
 class GitHubRepositoryList extends HookConsumerWidget {
-  const GitHubRepositoryList({super.key});
+  const GitHubRepositoryList({required this.goDetailPage, super.key});
+
+  final void Function(String) goDetailPage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,8 +44,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
           }
 
           return TextListTile(
-            // TODO: data.items[index].name を渡す
-            onTap: () => {},
+            onTap: () => goDetailPage(data.items[index].name),
             text: data.items[index].name,
           );
         },

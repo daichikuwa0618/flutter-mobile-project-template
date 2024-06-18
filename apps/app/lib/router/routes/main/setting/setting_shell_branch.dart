@@ -24,8 +24,10 @@ class SettingPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const ProviderScope(
-      child: SettingPage(),
+    return ProviderScope(
+      child: SettingPage(
+        goLicensePage: () => const LicensePageRoute().go(context),
+      ),
     );
   }
 }
