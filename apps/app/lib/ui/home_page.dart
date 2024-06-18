@@ -1,5 +1,4 @@
 import 'package:cores_designsystem/theme_extensions.dart';
-import 'package:cores_navigation/providers.dart';
 import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
@@ -13,19 +12,18 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10n.of(context);
-    final navigator = ref.watch(homeNavigatorProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(l.appBar),
         actions: [
           IconButton(
-            onPressed: () => navigator.goDebugPage(context),
+            onPressed: () => {}, // TODO
             icon: const Icon(
               Icons.construction,
             ),
           ),
           IconButton(
-            onPressed: () => navigator.goWebPage(context),
+            onPressed: () => {}, // TODO
             icon: const Icon(
               Icons.web,
             ),

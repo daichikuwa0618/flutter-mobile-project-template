@@ -1,7 +1,6 @@
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_designsystem/components.dart';
-import 'package:cores_navigation/providers.dart';
 import 'package:features_github_repository/src/data/provider/scroll_notifier.dart';
 import 'package:features_github_repository/src/domain/model/github_repository.dart';
 import 'package:features_github_repository/src/ui/provider/github_repository_list_notifier.dart';
@@ -20,7 +19,6 @@ class GitHubRepositoryList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = useScrollController();
-    final navigator = ref.watch(homeNavigatorProvider);
     ref.listen(scrollNotifierProvider, (_, __) async {
       if (!context.mounted) {
         return;
@@ -44,10 +42,8 @@ class GitHubRepositoryList extends HookConsumerWidget {
           }
 
           return TextListTile(
-            onTap: () => navigator.goGitHubRepositoryDetailPage(
-              context,
-              data.items[index].name,
-            ),
+            // TODO: data.items[index].name を渡す
+            onTap: () => {},
             text: data.items[index].name,
           );
         },

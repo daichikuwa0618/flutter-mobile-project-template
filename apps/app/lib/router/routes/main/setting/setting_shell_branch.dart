@@ -24,13 +24,8 @@ class SettingPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return ProviderScope(
-      overrides: [
-        settingNavigatorProvider.overrideWithValue(
-          const SettingNavigatorImpl(),
-        ),
-      ],
-      child: const SettingPage(),
+    return const ProviderScope(
+      child: SettingPage(),
     );
   }
 }
